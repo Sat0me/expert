@@ -1,0 +1,16 @@
+C:\Users\Максим\source\repos\opcserver\opcserver\bin\Debug\opcserver.exe.config
+C:\Users\Максим\source\repos\opcserver\opcserver\bin\Debug\opcserver.exe
+C:\Users\Максим\source\repos\opcserver\opcserver\bin\Debug\opcserver.pdb
+C:\Users\Максим\source\repos\opcserver\opcserver\obj\Debug\opcserver.csproj.AssemblyReference.cache
+C:\Users\Максим\source\repos\opcserver\opcserver\obj\Debug\opcserver.csproj.SuggestedBindingRedirects.cache
+C:\Users\Максим\source\repos\opcserver\opcserver\obj\Debug\MainWindow.g.cs
+C:\Users\Максим\source\repos\opcserver\opcserver\obj\Debug\App.g.cs
+C:\Users\Максим\source\repos\opcserver\opcserver\obj\Debug\opcserver_MarkupCompile.cache
+C:\Users\Максим\source\repos\opcserver\opcserver\obj\Debug\opcserver_MarkupCompile.lref
+C:\Users\Максим\source\repos\opcserver\opcserver\obj\Debug\MainWindow.baml
+C:\Users\Максим\source\repos\opcserver\opcserver\obj\Debug\opcserver.g.resources
+C:\Users\Максим\source\repos\opcserver\opcserver\obj\Debug\opcserver.Properties.Resources.resources
+C:\Users\Максим\source\repos\opcserver\opcserver\obj\Debug\opcserver.csproj.GenerateResource.cache
+C:\Users\Максим\source\repos\opcserver\opcserver\obj\Debug\opcserver.csproj.CoreCompileInputs.cache
+C:\Users\Максим\source\repos\opcserver\opcserver\obj\Debug\opcserver.exe
+C:\Users\Максим\source\repos\opcserver\opcserver\obj\Debug\opcserver.pdb
