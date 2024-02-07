@@ -7,7 +7,7 @@
         {
           "Tag": {
             "Name": "Tag1",
-            "Type": "int",
+            "Type": "Int32",
             "Work": true,
             "Access": "RW",
             "Value": 56
@@ -16,7 +16,7 @@
         {
           "Tag": {
             "Name": "Tag2",
-            "Type": "int",
+            "Type": "Int32",
             "Work": true,
             "Access": "RW",
             "Value": 5
@@ -25,7 +25,7 @@
         {
           "Tag": {
             "Name": "Tag3",
-            "Type": "float",
+            "Type": "Double",
             "Work": false,
             "Access": "W",
             "Value": 10.5
@@ -39,7 +39,7 @@
         {
           "Tag": {
             "Name": "Tag1",
-            "Type": "int",
+            "Type": "Int32",
             "Work": true,
             "Access": "RW",
             "Value": 52
@@ -48,7 +48,7 @@
         {
           "Tag": {
             "Name": "Tag2",
-            "Type": "int",
+            "Type": "Int32",
             "Work": true,
             "Access": "RW",
             "Value": 5
@@ -57,7 +57,7 @@
         {
           "Tag": {
             "Name": "Tag3",
-            "Type": "string",
+            "Type": "String",
             "Work": false,
             "Access": "W",
             "Value": "abc"
@@ -71,7 +71,7 @@
         {
           "Tag": {
             "Name": "Tag3",
-            "Type": "int",
+            "Type": "Int32",
             "Work": false,
             "Access": "W",
             "Value": 10
