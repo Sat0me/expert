@@ -89,8 +89,8 @@ public class Tag
     public string Type { get; set; }
     public bool Work { get; set; }
     public string Access { get; set; }
-    public int Value { get; set; }
-    public Tag(string name, string type, bool work, string access, int value)
+    public dynamic Value { get; set; }
+    public Tag(string name, string type, bool work, string access, dynamic value)
     {
         Name = name;
         Type = type;
