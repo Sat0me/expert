@@ -25,10 +25,10 @@
         {
           "Tag": {
             "Name": "Tag3",
-            "Type": "int",
+            "Type": "float",
             "Work": false,
             "Access": "W",
-            "Value": 7
+            "Value": 10.5
           }
         }
       ]
@@ -57,10 +57,10 @@
         {
           "Tag": {
             "Name": "Tag3",
-            "Type": "int",
+            "Type": "string",
             "Work": false,
             "Access": "W",
-            "Value": 7
+            "Value": "abc"
           }
         }
       ]

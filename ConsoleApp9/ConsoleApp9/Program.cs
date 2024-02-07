@@ -20,10 +20,10 @@ async Task JsonAdd(string json, string clickgroup)
     {
         root = await System.Text.Json.JsonSerializer.DeserializeAsync<Rootobject>(fs);
     }
-    //Добавляем теги
+    //Добавляем тег
     using (FileStream fs = new FileStream("json1.json", FileMode.Create))
     {
-        Tag tom = new Tag("Tag4", "int", false, "W", 10);
+        Tag tom = new Tag("Tag3", "string", false, "W", "abc");
         Group mix = new Group(tom);
         Server server = new Server(new List<Group> { mix });
         int count = 0;
@@ -33,7 +33,33 @@ async Task JsonAdd(string json, string clickgroup)
             count++;
         }
         server.NameGroup = clickgroup;
-        //root.Add(server);
+
+        var options = new JsonSerializerOptions { WriteIndented = true };
+        await System.Text.Json.JsonSerializer.SerializeAsync<Rootobject>(fs, root, options);
+    }
+}
+
+async Task JsonDelete(string json, string clickgroup)
+{
+    //Читаем json
+    Rootobject root = new Rootobject();
+    using (FileStream fs = new FileStream("json1.json", FileMode.OpenOrCreate))
+    {
+        root = await System.Text.Json.JsonSerializer.DeserializeAsync<Rootobject>(fs);
+    }
+    //Удаляем тег
+    using (FileStream fs = new FileStream("json1.json", FileMode.Create))
+    {
+        Tag tom = new Tag("Tag3", "string", false, "W", "abc");
+        Group mix = new Group(tom);
+        Server server = new Server(new List<Group> { mix });
+        int count = 0;
+        foreach (var i in root.Server)
+        {
+            if (i.NameGroup == clickgroup) { root.Server[count].Group.RemoveAt(2); break; }
+            count++;
+        }
+        server.NameGroup = clickgroup;
 
         var options = new JsonSerializerOptions { WriteIndented = true };
         await System.Text.Json.JsonSerializer.SerializeAsync<Rootobject>(fs, root, options);
@@ -41,7 +67,8 @@ async Task JsonAdd(string json, string clickgroup)
 }
 
 
-await JsonAdd(json, clickgroup);
+//await JsonAdd(json, clickgroup);
+await JsonDelete(json, clickgroup);
 
 
 
@@ -73,11 +100,6 @@ public class Group
 {
     public Tag Tag { get; set; }
     public Group(Tag tag)
-    {
-        Tag = tag;
-    }
-
-    public void Add(Tag tag)
     {
         Tag = tag;
     }
