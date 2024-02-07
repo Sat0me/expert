@@ -1,0 +1,83 @@
+{
+  "serverwork": true,
+  "Server": [
+    {
+      "NameGroup": "Group1",
+      "Group": [
+        {
+          "Tag": {
+            "Name": "Tag1",
+            "Type": "int",
+            "Work": true,
+            "Access": "RW",
+            "Value": 56
+          }
+        },
+        {
+          "Tag": {
+            "Name": "Tag2",
+            "Type": "int",
+            "Work": true,
+            "Access": "RW",
+            "Value": 5
+          }
+        },
+        {
+          "Tag": {
+            "Name": "Tag3",
+            "Type": "int",
+            "Work": false,
+            "Access": "W",
+            "Value": 7
+          }
+        }
+      ]
+    },
+    {
+      "NameGroup": "Group2",
+      "Group": [
+        {
+          "Tag": {
+            "Name": "Tag1",
+            "Type": "int",
+            "Work": true,
+            "Access": "RW",
+            "Value": 52
+          }
+        },
+        {
+          "Tag": {
+            "Name": "Tag2",
+            "Type": "int",
+            "Work": true,
+            "Access": "RW",
+            "Value": 5
+          }
+        },
+        {
+          "Tag": {
+            "Name": "Tag3",
+            "Type": "int",
+            "Work": false,
+            "Access": "W",
+            "Value": 7
+          }
+        }
+      ]
+    },
+    {
+      "NameGroup": "Group3",
+      "Group": [
+        {
+          "Tag": {
+            "Name": "Tag3",
+            "Type": "int",
+            "Work": false,
+            "Access": "W",
+            "Value": 10
+          }
+        }
+      ]
+    }
+  ]
+}
