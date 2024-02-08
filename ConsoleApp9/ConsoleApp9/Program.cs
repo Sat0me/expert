@@ -5,6 +5,9 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.IO;
 using System.Diagnostics;
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
 
 async Task JsonAdd(string json, string clickgroup, Tag tom)
 {
@@ -17,21 +20,46 @@ async Task JsonAdd(string json, string clickgroup, Tag tom)
     //Добавляем тег
     using (FileStream fs = new FileStream("json1.json", FileMode.Create))
     {
-        Group mix = new Group(tom);
-        Server server = new Server(new List<Group> { mix });
         int count = 0;
-        bool tagexist = false; 
+        bool tagexist = false, groupexist = false; 
+
         foreach (var i in root.Server)
         {
-            foreach(var j in root.Server[count].Group)
+            if (i.NameGroup == clickgroup)
             {
-                if (j.Tag.Name == tom.Name) { tagexist = true; Console.WriteLine("Такой тег уже существует"); }
+                groupexist = true;
+                if (tom == null) break;
+                Group mix = new Group(tom);
+                Server server = new Server(new List<Group> { mix });
+                foreach (var j in root.Server[count].Group)
+                {
+                    if (j.Tag != null)
+                    {
+                        if (j.Tag.Name == tom.Name) { tagexist = true; Console.WriteLine("Такой тег уже существует"); }
+                    }
+                }
+                if (!tagexist) { root.Server[count].Group.Add(mix); break; }
             }
-            if (tagexist == false && i.NameGroup == clickgroup) { root.Server[count].Group.Add(mix); break; }
             count++;
         }
+        if(!groupexist)
+        {
+            Server server;
+            if (tom != null)
+            {
+                Group mix = new Group(tom);
+                server = new Server(new List<Group> { mix });
+            }
+            else
+            {
+                
+                server = new Server(new List<Group> { });
+            }
+            server.NameGroup = clickgroup;
+            root.Server.Add(server);
+        }
 
-        var options = new JsonSerializerOptions { WriteIndented = true };
+        var options = new JsonSerializerOptions { WriteIndented = true, DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull };
         await System.Text.Json.JsonSerializer.SerializeAsync<Rootobject>(fs, root, options);
     }
 }
@@ -93,15 +121,15 @@ async Task JsonEdit(string json, string clickgroup, int indextag, Tag tom)
 
 //main
 string json = "json1.json";
-string clickgroup = "Group2";
-Tag tom = new Tag("Tag4", "String", false, "W", "abc");
+string clickgroup = "Group1";
+Tag tom = new Tag("Tag7", "String", false, "W", "abc");
 
 //Проверка на соответсвие типа данных с указанным в json
 Type type1 = tom.Value.GetType();
 if (type1.Name == tom.Type)
 {
     //функции добавления, удаления и редактирования тегов
-    await JsonAdd(json, clickgroup, tom);
+    await JsonAdd(json, clickgroup, null);
     //await JsonDelete(json, clickgroup, 2);
     //await JsonEdit(json, clickgroup, 2, tom);
 }
@@ -109,6 +137,11 @@ else Console.WriteLine("Тип данных не соответсвует зна
 
 //Типы данных, которые можно использовать
 List<string> types = new List<string>() { "Int32", "Int64", "Char", "Boolean", "String" };
+
+//Подключение к серверу
+
+
+
 
 public class Rootobject
 {
@@ -125,20 +158,25 @@ public class Rootobject
 public class Server
 {
     public string NameGroup { get; set; }
-    public List<Group> Group { get; set; }
+    public List<Group>? Group { get; set; }
     public Server(List<Group> group)
     { 
         Group = group;
     }
+
     
 }
 
 public class Group
 {
-    public Tag Tag { get; set; }
+    public Tag? Tag { get; set; }
     public Group(Tag tag)
     {
         Tag = tag;
+    }
+    public Group()
+    {
+
     }
 }
 
