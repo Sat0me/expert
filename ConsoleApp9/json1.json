@@ -1,0 +1,19 @@
+{
+  "serverwork": true,
+  "Server": [
+    {
+      "NameGroup": "Group0",
+      "Group": [
+        {
+          "Tag": {
+            "Name": "Tag1",
+            "Type": "String",
+            "Work": false,
+            "Access": "W",
+            "Value": "abc"
+          }
+        }
+      ]
+    }
+  ]
+}
