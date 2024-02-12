@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace MasterOPC
 {
@@ -21,18 +23,31 @@ namespace MasterOPC
     /// </summary>
     public partial class MainWindow : Window
     {
+        public string NameSender = "text";
+
+        public class Lub
+        {
+            public string Id;
+            public int val;
+        }
+
+
         public class Node
         {
             public string Name { get; set; }
             public ObservableCollection<Node> Nodes { get; set; }
-            public int Id { get; set; }
+            public int Id { get; set; } 
 
-        }
+         }
 
         
+
+
         public MainWindow()
         {
             InitializeComponent();
+            
+
             ObservableCollection<Node> nodes = new ObservableCollection<Node>()
             {
                 new Node
@@ -53,9 +68,11 @@ namespace MasterOPC
                     }
                 }
             };
-            Console.WriteLine();
+            this.DataContext = this;
+           
             TreeView1.ItemsSource = nodes;
-            TC.SelectedIndex = 0;
+            
+         
         }
 
         
@@ -63,10 +80,18 @@ namespace MasterOPC
 
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
-            var name = (sender as TextBlock).Tag;
+            TC.Visibility= Visibility.Visible;
+            var TagSender = (sender as TextBlock).Tag;
+            NameSender = (sender as TextBlock).Text;
             
-            switch (name)
+            TB_Name1.Text = "Сервер: " + NameSender;
+            TB_Name2.Text = "Группа - " + NameSender;
+            TB_Name3.Text = "Тег: " + NameSender; 
+            
+
+
+
+            switch (TagSender)
             {
                 case 1:
                     TC.SelectedIndex = 0; 
